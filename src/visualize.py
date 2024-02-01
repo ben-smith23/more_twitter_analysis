@@ -48,10 +48,10 @@ else:
     xlabel = 'Country'
     name = 'country'
 
-if str(args.key) == '#coronavirus':
+if str(args.key) == '#ww3':
     pngkey = '_' + str(args.key)[1:]
 else:
-    pngkey = '_korean'
+    pngkey = '_spanish'
 
 plt.xlabel(xlabel)
 plt.ylabel('Times Mentioned in Tweets')
