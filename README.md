@@ -37,17 +37,17 @@ $ ./src/alternative_reduce.py --hashtags="'#ww3', '#worldwar3', '#thirdworldwar'
 
 ### Plots made with <code>visualize.py</code>
 
-**\#ww3 Usage by Language in 2020**
+**\#worldwar3 Usage by Language in 2020**
 
-<img src=language_ww3.png width=50% />
+<img src=language_worldwar3.png width=50% />
 
 **\#terceraguerramundial Usage by Language in 2020**
 
 <img src=language_spanish.png width=50% />
 
-**\#ww3 Usage by Country in 2020**
+**\#worldwar3 Usage by Country in 2020**
 
-<img src=country_ww3.png width=50% />
+<img src=country_worldwar3.png width=50% />
 
 **\#terceraguerramundial Usage by Country in 2020**
 
