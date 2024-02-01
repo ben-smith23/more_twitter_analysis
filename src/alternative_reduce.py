@@ -53,26 +53,20 @@ fig, ax = plt.subplots()
 for hashtag in dataset:
     x_values = []
     y_values = []
-    days = 0
     for day in dataset[hashtag]:
-        days += 1
         # convert day string to datetime object
         try:
             date = dt.datetime.strptime(day, '%m-%d')
-            # Filter to include only January
-            if date.month == 1:
-                x_values.append(date)
-                y_values.append(dataset[hashtag][day])
+            x_values.append(date)
+            y_values.append(dataset[hashtag][day])
         except ValueError:
             continue
     x_values.sort()
     ax.plot(x_values, y_values, label=hashtag)
 
-# format x-axis as dates
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
-# Since we are only dealing with January, we might not need a MonthLocator here
-# ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1, bymonth=1))
-ax.xaxis.set_major_locator(mdates.DayLocator(interval=5))  # Use DayLocator for better granularity within January
+# format x-axis as dates for the whole year
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))  # Use abbreviated month name
+ax.xaxis.set_major_locator(mdates.MonthLocator())  # Set major ticks at the start of each month
 
 # Set the y-axis to a logarithmic scale
 ax.set_yscale('log')  # This changes the y-axis to a logarithmic scale

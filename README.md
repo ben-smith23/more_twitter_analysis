@@ -55,6 +55,6 @@ $ ./src/alternative_reduce.py --hashtags="'#ww3', '#worldwar3', '#thirdworldwar'
 
 ### Plot made with <code>alternative_reduce.py</code>
 
-**Hashtag Usage Over 2020**
+**Hashtag Usage During January, 2020**
 
  <img src=line_plot.png width=50% />
