@@ -48,7 +48,7 @@ for hashtag in list:
         hashtag_counts = {k: v for k, v in sorted(hashtag_counts.items())}
         dataset[hashtag] = hashtag_counts
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(12, 6))
 
 for hashtag in dataset:
     x_values = []
@@ -69,7 +69,7 @@ ax.set_yscale('log')
 
 # Format X-axis as dates
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
-ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1, bymonth=range(1, 13, 3)))
+ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1, bymonth=range(1, 13, 1)))
 
 # Optionally, adjust Y-axis format to improve readability
 y_format = mtick.FuncFormatter(lambda x, pos: '{:,.0f}'.format(x))
