@@ -48,28 +48,30 @@ for hashtag in list:
         hashtag_counts = {k: v for k, v in sorted(hashtag_counts.items())}
         dataset[hashtag] = hashtag_counts
 
-# create line plot
 fig, ax = plt.subplots()
+
+# Set the y-axis to a logarithmic scale before plotting
+ax.set_yscale('log')
+
 for hashtag in dataset:
     x_values = []
     y_values = []
+    days = 0
     for day in dataset[hashtag]:
-        # convert day string to datetime object
+        days += 1
+        # Convert day string to datetime object
         try:
             date = dt.datetime.strptime(day, '%m-%d')
-            x_values.append(date)
-            y_values.append(dataset[hashtag][day])
         except ValueError:
             continue
+        x_values.append(date)
+        y_values.append(dataset[hashtag][day])
     x_values.sort()
     ax.plot(x_values, y_values, label=hashtag)
 
-# format x-axis as dates for the whole year
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))  # Use abbreviated month name
-ax.xaxis.set_major_locator(mdates.MonthLocator())  # Set major ticks at the start of each month
-
-# Set the y-axis to a logarithmic scale
-ax.set_yscale('log')  # This changes the y-axis to a logarithmic scale
+# Format x-axis as dates
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
+ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1, bymonth=range(1, 13, 3)))
 
 # Adjust y-axis label to reflect the logarithmic scale
 ax.set_ylabel('Log of Times Mentioned in Tweets')
@@ -77,6 +79,5 @@ ax.set_ylabel('Log of Times Mentioned in Tweets')
 ax.set_xlabel('Date')
 ax.legend()
 
-# save plot
-plt.savefig('line_plot.png')
-
+# Save plot after all adjustments
+plt.savefig('line_plot_log_scale.png')

@@ -43,7 +43,7 @@ $ ./src/alternative_reduce.py --hashtags="'#ww3', '#worldwar3', '#thirdworldwar'
 
 **\#terceraguerramundial Usage by Language in 2020**
 
-<img src=language_terceraguerramundial.png width=50% />
+<img src=language_spanish.png width=50% />
 
 **\#ww3 Usage by Country in 2020**
 
@@ -51,7 +51,7 @@ $ ./src/alternative_reduce.py --hashtags="'#ww3', '#worldwar3', '#thirdworldwar'
 
 **\#terceraguerramundial Usage by Country in 2020**
 
-<img src=country_terceraguerramundial.png width=50% />
+<img src=country_spanish.png width=50% />
 
 ### Plot made with <code>alternative_reduce.py</code>
 
