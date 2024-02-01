@@ -48,7 +48,7 @@ else:
     xlabel = 'Country'
     name = 'country'
 
-if str(args.key) == '#ww3':
+if str(args.key) == '#worldwar3':
     pngkey = '_' + str(args.key)[1:]
 else:
     pngkey = '_spanish'

@@ -48,21 +48,15 @@ for hashtag in list:
         hashtag_counts = {k: v for k, v in sorted(hashtag_counts.items())}
         dataset[hashtag] = hashtag_counts
 
-fig, ax = plt.subplots(figsize=(12, 6))
-
-# Set the y-axis to a logarithmic scale
-ax.set_yscale('log')
-
-# Adjust y-axis label to reflect the logarithmic scale
-ax.set_ylabel('Log of Times Mentioned in Tweets')
+fig, ax = plt.subplots()
 
 for hashtag in dataset:
     x_values = []
     y_values = []
     for day in dataset[hashtag]:
-        # Convert day string to datetime object
+        # convert day string to datetime object
         try:
-            date = dt.datetime.strptime(day, '%Y-%m-%d')
+            date = dt.datetime.strptime(day, '%m-%d').replace(year=2020)  # Temporary year for plotting
         except ValueError:
             continue
         x_values.append(date)
@@ -70,12 +64,19 @@ for hashtag in dataset:
     x_values.sort()
     ax.plot(x_values, y_values, label=hashtag)
 
-# Format x-axis as dates
+# Set Y-axis to logarithmic scale
+ax.set_yscale('log')
+
+# Format X-axis as dates
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
-ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1))
+ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1, bymonth=range(1, 13, 3)))
+
+# Optionally, adjust Y-axis format to improve readability
+y_format = mtick.FuncFormatter(lambda x, pos: '{:,.0f}'.format(x))
+ax.yaxis.set_major_formatter(y_format)
 
 ax.set_xlabel('Date')
-
+ax.set_ylabel('Times Mentioned in Tweets')
 ax.legend()
 
 # Save plot
